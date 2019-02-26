@@ -9,6 +9,9 @@ import scrapy
 
 
 class A02WxappItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    # 将传递的对象封装成类
+    '''表名传递的对象只能有这两个属性'''
+    title = scrapy.Field()  # 固定写法
+    author = scrapy.Field()
+    pub_time = scrapy.Field()
+    content = scrapy.Field()
