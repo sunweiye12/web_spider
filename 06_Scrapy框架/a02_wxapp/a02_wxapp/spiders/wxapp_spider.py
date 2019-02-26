@@ -11,7 +11,7 @@ class WxappSpiderSpider(CrawlSpider):
 
     rules = (   # allow中包含的是所有符合规则的地址(正则表达式)
         Rule(LinkExtractor(allow=r'.+mod=list&catid=2&page=\d'),  follow=True), # 教程列表页面的地址,去掉的回调函数,follow代表是否跟进
-        Rule(LinkExtractor(allow=r'.+article-4909-1\.html'),callback='')                                            # 教程详情的地址
+        Rule(LinkExtractor(allow=r'.+article-4909-1\.html'),callback='')        # 教程详情的地址,如果在页面中检索到符合规则的链接不进行跟进
     )
 
     def parse_item(self, response):
