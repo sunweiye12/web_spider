@@ -1,0 +1,39 @@
+
+1. url = 'http://httpbin.org                    # 可以查看http请求的一些参数
+    url = 'http://httpbin.org/ip'               # 这是一个网站可以打印你当前计算机的外网对应的ip地址(就是你去访问百度,百度看到的你的ip)
+
+2.  网页中都是byte格式的源码 可以通过decode('utf-8') 解码成 str字符串
+    str字符串 可以通过encode('utf-8') 编码成网页byte格式的源码
+
+3. URL中除了英文字母,数字和部分符号外其余都是  % + 16进制数  构成
+    方法可以将我们输入URL的编码成真正的URL
+    qs = parse.urlencode(params)        # 编码字段
+    方法可以将编码后的URL解码成我们认识的URL
+    result = parse.parse_qs(qs)         # 解码字段
+
+4. 在一个位置下创建一个文件,使用 utf-8 编码成 str 并作为 fp  .向里面写入信息
+
+    with open('99_test//baidu.html','w',encoding='utf-8') as fp:
+        fp.write(response.content.decode('utf-8'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

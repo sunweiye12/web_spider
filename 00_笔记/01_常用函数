@@ -1,0 +1,87 @@
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------urllib----------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+urllib库中的request模块
+from urllib import request
+
+            1. 打开并返回一个地址
+            resp = request.urlopen("http://www.baidu.com")
+
+                # 1读取网页源码出来
+                # print(resp.read())
+                # 2读取10个字符
+                # print(resp.read(10))
+                # 3读取网页的一行
+                # print(resp.readline())
+                # 4将网页一行一行的读取出来
+                # print(resp.readlines())
+
+            2. 将访问的网页下载到本地(下载的是网页源码)
+            request.urlretrieve("http://www.baidu.com","baidu.html")
+
+            3.可以设置请求总的信息,包括请求头,提交方式等,返回的类型可以直接用urlopen()打开网页
+            req = request.Request(url,headers=headers,data=parse.urlencode(data).encode('utf-8'),method='POST')
+
+            4.代理ip的ProxyHandler服务
+                1. 使用ProxyHandler，传入代理得到一个handler
+               handler = request.ProxyHandler({"http":"223.241.78.43:8010"})  (key=网站的请求方式(http/https) value=(代理ip:代理服务器接受的端口号)  )
+                2. 使用上面创建的handler构建一个opener
+               opener = request.build_opener(handler)
+                3. 使用opener去发送一个请求
+               resp = opener.open(url)
+
+             5.通过添加一个cookiejar对象来返回一个handler
+             handler = request.HTTPCookieProcessor(cookiejar)
+
+urllib库中的parse模块
+from urllib import parse
+
+            1. 通过pares模块的urlencode函数进行编码
+               params = {'name':'张三',"age":18,'greet':'hello world'}
+               result = parse.urlencode(params)
+
+            2. 解码字段
+                result = parse.parse_qs(result)
+
+            3.urlparse和urlsplit函数是用于将URL分段解析(返回字典对象)
+                result1 = parse.urlparse(url)
+                result2 = parse.urlsplit(url)   # urlsplit()函数查询结果中没有params属性
+
+-------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------http.cookiejar----------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+http.cookiejar库中的CookieJar模块
+from http.cookiejar import CookieJar
+
+            1.创建cookiejar对象
+            cookiejar = CookieJar()
+              使用cookiejar创建一个HTTPCookieProcess对象
+            handler = request.HTTPCookieProcessor(cookiejar)
+              使用上一步创建的handler创建一个opener
+            opener = request.build_opener(handler)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

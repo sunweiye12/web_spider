@@ -1,0 +1,560 @@
+
+
+
+
+
+
+
+
+
+<!--------------------滚动新闻才需要--------------------------->
+
+<!--------------------滚动新闻才需要--------------------------->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head> 
+    <title>北京工业大学财务信息门户</title>  
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="homePage">
+    <script type="text/javascript" src="js/all.js"></script>
+
+<style type="text/css">
+	  #sysNavigator .syslink.noie{
+			cursor:pointer;
+			height:50px;
+			width:201px;
+		}
+		#sysNavigator .syslink.ie{
+			cursor:pointer;
+			height:40px;
+			width:200px;
+		}
+		#weather_inc.noie{
+			margin-left:-40px;
+			margin-top:30px;
+		}
+		#weather_inc.ie{
+			margin-top:30px;
+		}
+		#tbNews.noie{
+			margin-top:5px;
+			margin-left: 1px;
+			margin-right: 1px;
+		}
+		#tbNews.ie{
+			margin-top:8px;
+			margin-left: 1px;;
+			margin-right: 1px;
+		}
+		
+	  #news{
+			height:200px;
+
+		}
+    #sysNavigator {
+			float:left;
+			padding-right:10px;
+			margin-top:20px;
+		}
+		#sysNavigator span{
+			float:left;
+		}
+
+    .navigation {
+    background:#76C8EE url(img/top-new.jpg) top left no-repeat;
+    height: 81px;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    }
+    .navigation * {
+    padding:0;
+    margin:0;
+    text-transform: uppercase;
+    }
+    .navigation div{
+    	height: 60px
+    }
+    .navigation ul {
+    display: block;
+    float: right;
+    padding-top: 0px;
+    margin:  0px 0 50px 0;
+    }
+    .navigation ul li {
+    list-style: none;
+    float: left;
+    margin: 26 0 0 0px;
+    }
+    
+.navigation ul li a {
+    background: url(images/nav_right_IE6.png) top right no-repeat !important;
+    background: url(images/nav_right.png) top right no-repeat;
+    display: block;
+    padding: 0 3px 0 0;
+    color: #134069;
+    text-decoration: none
+    }
+ .navigation ul li.selected a,
+ .navigation ul li.hover a {
+     background: url(images/nav_selected_right.png) top right no-repeat !important;
+     background: url(images/nav_selected_right_IE6.png) top right no-repeat;
+     color: #134069;
+     }
+
+ .navigation ul li a span {
+     background: url(images/nav_left.png) top left no-repeat !important;
+     background: url(images/nav_left_IE6.png) top left no-repeat;
+     display: block;
+     padding: 10px 10px 10px 10px;
+     }
+ .navigation ul li.selected a span,
+ .navigation ul li.hover a span {
+     background: url(images/nav_selected_left.png) top left no-repeat !important;
+     background: url(images/nav_selected_left_IE6.png) top left no-repeat;
+     }
+body {
+	background-image: url(img/main-bg.jpg);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+a.link:link {
+	font-size: 12px;
+	color: #0359B7;
+	text-decoration: none;
+}
+a.link:visited {
+	font-size: 12px;
+	color: #0359B7;
+	text-decoration: none;
+}
+a.link:hover {
+	font-size: 12px;
+	color: #0359B7;
+	text-decoration: none;
+}
+a.link:active {
+	font-size: 12px;
+	color: #0359B7;
+	text-decoration: none;
+}
+
+
+
+.news {
+	font-size: 12px;
+	line-height: 22px;
+	color: #191970;
+	text-decoration: none;
+}
+	#box{width:100%;margin:0px;font:12px;color:#0F4990;}
+	#tab_nav{margin:0;padding:0;height:30px;line-height:30px;background-color:#fff;}
+	#tab_nav li{float:left; margin:0 -1px; list-style:none; border:1px solid #fff; border-bottom:none; height:24px; width:100px; text-align:center; background:#BBE0FB;padding-top:8px;}
+	a{font:bold 12px "微软雅黑" ; color:#0F4990; text-decoration:none;}
+	a:hover{color:red;}
+	#tab_content{width:99%; height:300px; border:1px solid #BBE0FB;  background:#FFF; overflow:hidden;}
+	#t_1,#t_2,#t_3{width:100%; height:300px;}
+	
+	
+	
+	
+	
+</style>
+
+<link rel="stylesheet" type="text/css" href="style/all.css"/> 
+             
+<script type="text/javascript">
+
+$(function() {
+	var getBrowseHeight=function(topSpace){  
+	    var f_filterResults=function(n_win, n_docel, n_body) {
+			if (n_win)
+				return n_win;
+			else if (n_docel) 
+				return n_docel;
+		    else 
+		    	return n_body;
+		};
+	    var f_clientHeight=function() {
+			return f_filterResults (
+				window.innerHeight ? window.innerHeight : 0,
+				document.documentElement ? document.documentElement.clientHeight : 0,
+				document.body ? document.body.clientHeight : 0
+			);
+		};
+		
+		var top = topSpace?topSpace:0;
+		var bh=f_clientHeight();
+		return bh - top- 20;
+	};
+	
+	if ($.browser.msie)
+	  	$(".ieSensitive").addClass("ie");
+	else
+	  	$(".ieSensitive").addClass("noie");
+	  	
+    $(".navigation ul li").hover(function() {
+        $(this).addClass("hover");
+    }, function() {
+        $(this).removeClass("hover");
+    });
+    
+    $(".navigation ul li").click(function() {
+        $(".navigation ul li").removeClass("selected");     
+        $(this).addClass("selected");
+    });
+    
+    $(".syslink").hover(
+    	function(){
+    		var arImgName=$(this).find("img").attr("src").split(".");
+    		var onImgName=arImgName[0]+"_on."+arImgName[1];
+    		$(this).find("img").attr("src",onImgName);
+    	},
+    	function(){
+    		var arImgName=$(this).find("img").attr("src").split("_on.");
+    		var ImgName=arImgName[0]+"."+arImgName[1];
+    		$(this).find("img").attr("src",ImgName);
+    	}
+    );
+    $("#changePwd").click(function(){
+    	$dlg=$("#divChangePwd");
+    	
+    	$dlg.dialog({
+  			autoOpen:true,
+  			modal: true,
+			width:$dlg.width(),
+			height:292,
+			closeOnEscape:true,
+			resizable: false,
+			open:function(event,ui){
+				$dlg.parent().find(".ui-dialog-titlebar").css("display","none");
+				$dlg.css({"padding":"0px","overflow":"hidden","height":"245px"});
+			},
+			close:function(event, ui){
+				$dlg.dialog("destroy");
+			}});
+    });
+    $("#btCancelChange").click(function(){
+    	$("#divChangePwd").dialog("close");
+    });
+    $("#btChangePwd").click(function(){
+		var old = $("#oldPwd").val();
+		var new1 = $("#newPwd1").val();
+		var new2 = $("#newPwd2").val();
+		var $errMsg=$("#errMsg");
+		if(old=="" || new1=="" || new2=="")
+			$errMsg.html("请勿输入空值!");
+		else if(new1!=new2)
+			$errMsg.html("两次输入密码值不同,请重新输入!");
+		else{
+			$.ajax({
+				type: "POST",
+				url: "loginAction_changePwd.action",
+				data: {oldPwd:old,newPwd:new1},
+				dataType: "text",
+				success:function(data,textStatus){
+					if(data == "ok"){
+						$errMsg.html("密码修改成功");
+						
+					}else
+						$errMsg.html("密码修改失败:"+data);
+				},
+				error:function(e){
+					alert(e.responseText);
+				}
+				
+			});
+			
+		}
+    });
+	$.loadFlash($("#sys_icons").text(),"navToPrj");
+	var newsH=getBrowseHeight(0)-494;
+	$(".newsSubType").css("height",newsH+"px");
+	$(window).resize(function() {
+		var newsH=getBrowseHeight(0)-494;
+		$(".newsSubType").css("height",newsH+"px");
+	});
+});
+</script>
+  <body>
+  
+      <table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="70" bgcolor="#CCCCCC"  valign="top">
+	             <div class="navigation">
+				    <div id="topnav" style="float:right;margin-top: -25px;margin-right: 33px;">
+					</div>
+                 </div>
+    </td>
+  
+  
+  <tr>
+   <td>
+	 <div id="wfMain" >
+            <div id="home"    style="overflow-x:hidden;">
+					 
+ <table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="207" valign="top"  background="img/new-img/leftmenubg.jpg" style="padding-top:30px; " ><!-- 系统导航 -->
+                            
+                            <div id="sysNavigator">
+                                  
+                                    <div class="syslink ieSensitive"
+                                        onclick="navToPrj('WF_CWBS')"
+                                        title="点击进入">
+                                       <img src="img/xbcx.jpg" style="border:0"/> 
+                                    </div>
+                                  
+                                    <div class="syslink ieSensitive"
+                                        onclick="navToPrj('WF_YB')"
+                                        title="点击进入">
+                                       <img src="img/yybx.jpg" style="border:0"/> 
+                                    </div>
+                                
+              </div>			  </td>
+        <td width="600" valign="top"  style="background-image:url(img/new-img/mainbg1.jpg); padding:6px 0 5px 10px; "><!-- 第二列 -->
+		<table width="80%" height="100%"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+          <td height="240" > <!-- 图片新闻 -->
+			<table width="100%" height="240" border="0" cellpadding="2" cellspacing="1" bgcolor="#D4E9FC">
+                  <tr>
+                      <td height="43"  ><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                             <tr>
+                                <td  background="img/new-img/banner1c.jpg" width="395"><img src="img/new-img/banner1a.jpg" width="395" height="43" /></td>
+                                <td  background="img/new-img/banner1c.jpg">&nbsp;</td>
+                                <td width="401"><img src="img/new-img/banner1b.jpg" width="401" height="43" /></td>
+                              </tr>
+</table></td>
+                  </tr>
+                  <tr>
+                      <td valign="top" bgcolor="#ffffff" style=" min-width: 600px; " >
+					  <table width="100%"  border="0" cellspacing="0" cellpadding="6">
+      <tr>
+        <td width="400">
+		<div align="center">
+  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id=scriptmain name=scriptmain codebase="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,29,0" width="400" height="200">
+    <param name="movie" value="bcastr.swf?bcastr_xml_url=xml/bcastr.xml">
+    <param name="quality" value="high">
+    <param name=scale value=noscale>
+    <param name="LOOP" value="false">
+    <param name="menu" value="false">
+    <param name="wmode" value="transparent">
+    <embed src="bcastr.swf?bcastr_xml_url=xml/bcastr.xml" width="400" height="200" loop="false" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" salign="T" name="scriptmain" menu="false" wmode="transparent"></embed>
+  </object>
+</div></td>
+        <td valign="top">
+      </td>
+      </tr>
+    </table>
+	</td>
+			      </tr>
+		    </table>	
+			</td>
+               <tr>
+            <td  style="padding:8px 0 0 0 ; "> <!-- 财务新闻 -->
+			 <table width="100%" height="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D4E9FC">
+                  <tr>
+                      <td height="43" background="img/new-img/banner2.jpg" >&nbsp;</td>
+                  </tr>
+             <tr>
+                      <td valign="top" background="img/new-img/hbg2.jpg" style="padding:0 0 0 230px; ">
+					  <table id="tbNews" class="ieSensitive" width="100%"  border="0" cellpadding="0" cellspacing="1">
+          
+												          <tr>
+												            <td height="100%" align="left" valign="top"  >
+															 		   <script language="JavaScript" src="index.js"></script>
+												                <script language="JavaScript">
+																				//Recreated Begin-->
+																				
+																				  AddTitle('关于年收入达12万元代理申报的通知及附件','/wingsoft/common/news.jsp?id=19');
+																				
+																				  AddTitle('关于在"财务处综合信息门户"中所用职工号升至5位说明','/wingsoft/common/news.jsp?id=18');
+																				
+																				  AddTitle('财务处关于及时认领境外汇款的通知','/wingsoft/common/news.jsp?id=15');
+																				
+																				  AddTitle('建行工资卡未领取人员表','/wingsoft/common/news.jsp?id=16');
+																				
+																				  AddTitle('我校开户银行账号及统一社会信用代码','/wingsoft/common/news.jsp?id=17');
+																				
+																				  AddTitle('欢迎访问北京工业大学财务处校内网站','http://xnwz.bjut.edu.cn/cwc/');
+																				
+																				  AddTitle('预算经费报销须知','common/news.jsp?id=13');
+																				
+																				  AddTitle('财务处关于发票真伪查询方法的通知','/wingsoft/common/news.jsp?id=12');
+																				
+																				  AddTitle('北京工业大学公务卡使用培训','/wingsoft/news/gwk.pdf');
+																				
+																				  AddTitle('借现金、借支票、办理银行汇款及核销流程','/wingsoft/news/jf-jk.jpg');
+																				
+																				  AddTitle('收入结算工作流程','/wingsoft/news/jf-srjs.jpg');
+																				
+																				  AddTitle('科研项目到款流程','/wingsoft/news/ky-xmdk.jpg');
+																				
+																				  AddTitle('科研经费报销流程','/wingsoft/news/ky-kyjfbxlc.jpg');
+																				
+																				  AddTitle('购置固定资产流程','/wingsoft/news/gdzc-gz.jpg');
+																				
+																				  AddTitle('报废固定资产流程','/wingsoft/news/gdzc-bf.jpg');
+																				
+																				  AddTitle('中华人民共和国个人所得税法实施条例','/wingsoft/news/sfjd1.doc');
+																				
+																				  AddTitle('关于离退休人员工资信息网上查询的说明','common/news.jsp?id=3');
+																				
+																				  AddTitle('预算经费报销流程','/wingsoft/news/jf-ysjfbxlc.jpg');
+																				
+																				  AddTitle('关于在职职工工资信息网上查询的说明','common/news.jsp?id=1');
+																				
+																				//Recreated End-->
+																				EndNews();
+												          </script>		    </td>
+												          </tr>
+			          </table>	
+					  </td>
+             </tr>
+             </table>
+			
+				    </td>
+          </tr>
+        </table>
+		</td>
+		
+        <td width="300" valign="top" style="background-image:url(img/new-img/mainbg2.jpg);padding:6px 0 5px 10px;"><!-- 第三列 -->
+		<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="160"  valign="top" style=" background-image:url(img/new-img/msg-bg.jpg);padding:0px 2px 0 20px; "><!-- 站内消息 -->
+			
+			  <table width="265" border="0">
+                <tr>
+                  <td height="36" align="right"><a href="#"><img id="changePwd" src="img/new-img/passedit.gif" alt="修改密码" width="36" height="37" border="0" title="修改密码"></a> </td>
+                </tr>
+              </table>
+			  <table   border="0" cellpadding="0" cellspacing="0" >
+                    <tr>
+                      <td height="30" class="news"><strong>欢迎您:孙伟业</strong></td>
+                    </tr>
+                    <tr>
+                      <td class="news">北京工业大学财务信息门户网站已上线运行！ <br>
+                        为了达到最佳使用效果，使用之前，请将屏幕<br>分辨率设置为1024x768或以上！ </td>
+                    </tr>
+            </table>
+			<div id="divChangePwd" style=" width:400px;display:none;background-color:white">
+<table width="400" border="0" cellpadding="0" cellspacing="1" style="font-size:12px;">
+  <tr>
+    <td colspan="2"><img src="img/new-img/password-bg.jpg" width="400" height="40" /></td>
+  </tr>
+  <tr>
+    <td width="150" height="40" align="right" bgcolor="#EBEBEB">原密码：</td>
+    <td width="250" height="40" align="left" bgcolor="#EBEBEB" style="padding:6px;" >
+	<input id="oldPwd" type="password" name="textfield"  style="width:150px;"/></td>
+  </tr>
+  <tr>
+    <td height="40" align="right" bgcolor="#EBEBEB">新密码：</td>
+    <td height="40" align="left" bgcolor="#EBEBEB" style="padding:6px;">
+	<input id="newPwd1" type="password" name="textfield2" style="width:150px;"/></td>
+  </tr>
+  <tr>
+    <td height="40" align="right" bgcolor="#EBEBEB">重复新密码：</td>
+    <td height="40" align="left" bgcolor="#EBEBEB" style="padding:6px;">
+	<input id="newPwd2" type="password" name="textfield3" style="width:150px;" /></td>
+  </tr>
+    <tr>
+    <td height="40" align="center" bgcolor="#EBEBEB" colspan="2">
+	<div id="errMsg" style="font-weight:bold;color:red;font-size:14px;"></div></td>
+    
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#EBEBEB"><table width="100%" border="0">
+      <tr>
+        <td align="center"><a href="#">
+		<img id="btChangePwd" src="img/new-img/btn1.png" width="80" height="30" border="0" /></a></td>
+        <td align="center"><a href="#">
+		<img id="btCancelChange" src="img/new-img/btn2.png" width="80" height="30" border="0" /></a></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></div>
+
+					</td>
+          </tr>
+  
+          <tr>
+            <td valign="top" align="left" style="padding:5px 0 0 0; ">
+			 <!-- 友情链接 -->
+                            
+ <table width="290px" height="100%"  border="0" cellpadding="0" cellspacing="1" bgcolor="#B7DAF4">
+  <tr>
+    <td height="40" valign="top" background="img/new-img/link-bg.jpg">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" background="img/new-img/link-bg2.jpg"  align="center" style="padding:5px 0 0 0; ">
+	    <table width="90%" >
+           <tr>
+             <td width="17%" height="30" align="right" background="images/linebg.gif"><img src="images/arrow.gif" width="18" height="19"></td>
+             <td width="83%" background="images/linebg.gif"><a href="http://www.bjut.edu.cn/" target=_blank class="link"><strong>北京工业大学</strong></a></td>
+           </tr>
+		     <tr>
+    <td width="17%" height="30" align="right" background="images/linebg.gif"><img src="images/arrow.gif" width="18" height="19"></td>
+  <td width="83%" background="images/linebg.gif"><a href="http://portal2nd.bjut.edu.cn/cwc/" target=_blank class="link"><strong>北京工业大学财务处首页</strong></a></td>
+  </tr>
+           <tr>
+            <td height="30" align="right" background="images/linebg.gif"><img src="images/arrow.gif" width="18" height="19"></td>
+            <td background="images/linebg.gif"><a href="http://windows.microsoft.com/zh-CN/internet-explorer/downloads/ie-8" target=_blank class="link"><strong>下载 IE8浏览器</strong></a></td>
+           </tr>
+		    <tr>
+             <td width="17%" height="30" align="right" background="images/linebg.gif"><img src="images/arrow.gif" width="18" height="19"></td>
+             <td width="83%" background="images/linebg.gif"><a href="http://124.192.141.6/softdl.360tpcdn.com/Chrome/Chromestable_52.0.2743.116.exe" target=_blank class="link"><strong color='red'>下载谷歌浏览器浏览器</strong></a></td>
+           </tr>
+		   		    <tr>
+             <td width="17%" height="30" align="right" background="images/linebg.gif"><img src="images/arrow.gif" width="18" height="19"></td>
+             <td width="83%" background="images/linebg.gif"><img id="chrom" src="images/scanforweixin.jpg" /><strong color='red'></strong></a></td>
+           </tr>
+        </table>
+     </td>
+  </tr>
+</table>       
+      </td>
+          </tr>
+        </table>
+		</td>
+      </tr>
+    </table>             
+ </div>
+
+   
+        <div  id="WF_CWBS" url="../WF_CWBS/main2.jsp?context=_@0-UINFO.BUSINESS_ID_@:_@_@,_@0-UINFO.USERID_@:_@S201761020_@,_@0-UINFO.MODBDATE_@:_@N_@,_@0-UINFO.MODPWD_@:_@Y_@,_@0-UINFO.DEPT1_@:_@_@,_@0-UINFO.DEPT2_@:_@_@,_@0-UINFO.DEPT3_@:_@_@,_@0-UINFO.DEPT4_@:_@_@,_@0-UINFO.SPEC1_@:_@_@,_@0-UINFO.SPEC2_@:_@_@,_@0-UINFO.SPEC3_@:_@_@,_@0-UINFO.SPEC4_@:_@_@,_@0-CURRENTYEAR_@:_@2018_@,_@0-CURRENTMONTH_@:_@12_@,_@0-CURRENTDAY_@:_@13_@,_@0-CURRENTYM_@:_@201812_@,_@0-CURRENTYMD_@:_@20181213_@,_@0-TODAY_@:_@2018-12-13_@,_@0-LOGINTIME_@:_@2018-12-13 15:10:50_@,_@0-BYEAR_@:_@2018_@,_@0-BMONTH_@:_@12_@,_@0-BDATE_@:_@2018-12-13_@,_@WINMODEL_@:_@imbed_@&pId=WF_CWBS" style="overflow:hidden;height:100%;display:none">
+            <iframe style="width:100%" class="frmSubSystem" 
+                    allowtransparency=true
+                    scrolling="no"  
+                    frameborder="0" 
+                    >
+            </iframe>
+        </div>              
+
+        <div  id="WF_YB" url="../WF_YB/main2.jsp?context=_@0-UINFO.BUSINESS_ID_@:_@_@,_@0-UINFO.USERID_@:_@S201761020_@,_@0-UINFO.MODBDATE_@:_@N_@,_@0-UINFO.MODPWD_@:_@Y_@,_@0-UINFO.DEPT1_@:_@_@,_@0-UINFO.DEPT2_@:_@_@,_@0-UINFO.DEPT3_@:_@_@,_@0-UINFO.DEPT4_@:_@_@,_@0-UINFO.SPEC1_@:_@_@,_@0-UINFO.SPEC2_@:_@_@,_@0-UINFO.SPEC3_@:_@_@,_@0-UINFO.SPEC4_@:_@_@,_@0-CURRENTYEAR_@:_@2018_@,_@0-CURRENTMONTH_@:_@12_@,_@0-CURRENTDAY_@:_@13_@,_@0-CURRENTYM_@:_@201812_@,_@0-CURRENTYMD_@:_@20181213_@,_@0-TODAY_@:_@2018-12-13_@,_@0-LOGINTIME_@:_@2018-12-13 15:10:50_@,_@0-BYEAR_@:_@2018_@,_@0-BMONTH_@:_@12_@,_@0-BDATE_@:_@2018-12-13_@,_@WINMODEL_@:_@imbed_@&pId=WF_YB" style="overflow:hidden;height:100%;display:none">
+            <iframe style="width:100%" class="frmSubSystem" 
+                    allowtransparency=true
+                    scrolling="no"  
+                    frameborder="0" 
+                    >
+            </iframe>
+        </div>              
+              
+     </div>
+
+	 <div id="sys_icons" style="display:none">img/xbcx.jpg$$$WF_CWBS|$|img/yybx.jpg$$$WF_YB|$|</div>
+    </td>
+
+  </tr>
+  <tr >
+    <td height="30" background="img/new-img/bott.gif"  align="center" style="font-size:12px; ">copyright 2013 复旦天翼 版权所有</td>
+  </tr>
+</table>
+<div  id="error" style="width:600px; height:400px; display:none; background-image:url(img/new-img/errorbg.jpg) no-repeat;"></div>
+</body>
+</html>
